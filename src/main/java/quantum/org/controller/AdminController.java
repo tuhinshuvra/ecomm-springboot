@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import quantum.org.dto.ProductDTO;
 import quantum.org.model.Category;
+import quantum.org.model.Product;
 import quantum.org.service.CategoryService;
+import quantum.org.service.ProductService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +23,9 @@ public class AdminController {
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    ProductService productService;
 
     @GetMapping("/admin")
     public String adminHome() {
@@ -61,6 +67,21 @@ public class AdminController {
             return "categoriesAdd";
         } else
             return "404";
+    }
+
+    // Product Section
+
+    @GetMapping("/admin/products")
+    public String getProducts(Model model) {
+        model.addAttribute("products", productService.getAllProduct());
+        return "products";
+    }
+
+    @GetMapping("/admin/products/add")
+    public String getProductAdd(Model model) {
+        model.addAttribute("productDTO", new ProductDTO());
+
+        return "productsAdd";
     }
 
 }
