@@ -18,15 +18,19 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Product> getProductById(Long id) {
+    public Optional<Product> getProductById(long id) {
         return productRepository.findById(id);
+    }
+
+    public List<Product> getAllProductsByCategoryId(int id) {
+        return productRepository.findAllByCategory_Id(id);
     }
 
     public void addProduct(Product product) {
         productRepository.save(product);
     }
 
-    public void removeProductById(Long id) {
+    public void removeProductById(long id) {
         productRepository.deleteById(id);
     }
 }
