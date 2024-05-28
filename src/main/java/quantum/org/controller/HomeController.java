@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import quantum.org.service.CategoryService;
 import quantum.org.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class HomeController {
@@ -27,6 +28,21 @@ public class HomeController {
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("products", productService.getAllProduct());
         return "shop";
+    }
+
+    @GetMapping("/shop/category/{id}")
+    public String getProductByCategory(Model model, @PathVariable int id) {
+
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("products", productService.getAllProductsByCategoryId(id));
+        return "shop";
+    }
+
+    @GetMapping("/shop/viewproduct/{id}")
+    public String viewProductDetails(Model model, @PathVariable int id) {
+
+        model.addAttribute("product", productService.getProductById(id).get());
+        return "viewProduct";
     }
 
 }

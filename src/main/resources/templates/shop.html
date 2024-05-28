@@ -32,16 +32,16 @@
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}" href="#">home</a>
+                        <a class="nav-link fw-bold " th:href="@{/}" href="#">Home</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
+                        <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
@@ -64,7 +64,7 @@
                     </a>
                     <a href="" th:each="category, iStat : ${categories}"
                         th:href="@{/shop/category/{id}(id=${category.id})}">
-                        <li class="list-group-item" th:text="${category.name}"></li>
+                        <li class="text-decoration-none list-group-item" th:text="${category.name}"></li>
                     </a>
 
                 </ul>
